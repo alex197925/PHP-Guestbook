@@ -3,8 +3,18 @@ declare(strict_types=1);
 
 require 'Post.php';
 require 'PostLoader.php';
+$data = require 'data.txt';
 date_default_timezone_set("UTC");
 $Date = date('m/d/Y');
+
+
+
+if (isset($_POST['submit'])) {
+     $post = new Post($_POST['text'], $_POST['title'], $_POST['author'], $_POST['data']);
+     var_dump($post);
+}
+
+
 
 ?>
 
@@ -24,22 +34,27 @@ $Date = date('m/d/Y');
         </div>
         <form method="post" action="index.php">
             <div class="date">
-                <span><?php
-                    echo "Date:".$Date;
-
-                    ?></span>
+                <span>
             </div>
+            <div class="title">
+                <label for="title">
+                    Title: <input type="text" name="title">
+                </label>
+            </div>
+            <div class="author">
+                <label for="author">
+                    Authot: <input type="text" name="author">
+                </label>
+            </div>
+
             <div class="message">
                 <label>
-                    Message: <textarea name="text data" rows="5" cols="40"></textarea>
+                    Message: <textarea name="text" rows="5" cols="40"></textarea>
                 </label>
                 <button type="submit" name="submit">Post Comment</button>
             </div>
             <div class="output_message">
                 <output name="result" for="a b">
-                    <?php
-                    echo "hello"
-                    ?>
 
                 </output>
             </div>
