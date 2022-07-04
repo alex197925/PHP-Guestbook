@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
  class Post {
-     private  $title;
-     private $data;
-     private $content;
-     private $autor;
+     private string $title;
+     private int $data;
+     private string $content;
+     private string $author;
 
 
 
-     public function __construct($title, $data, $content, $autor)
+     public function __construct($content, $title,  $author, $data)
      {
-         $this->title = $title;
-         $this->data = $data('Y/m/d H-i-s');
+        $this->title = $title;
+        $this->data = $data('Y/m/d H-i-s');
          $this->content = $content;
-         $this->autor = $autor;
+        $this->autor = $author;
      }
 
      /**
@@ -47,5 +47,6 @@ declare(strict_types=1);
      {
          return $this->autor;
      }
+
 
  }
