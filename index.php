@@ -10,7 +10,7 @@ $Date = date('m/d/Y');
 
 
 if (isset($_POST['submit'])) {
-     $post = new Post($_POST['text'], $_POST['title'], $_POST['author'], $_POST['data']);
+     $post = new Post($_POST['text'], $_POST['title'], $_POST['author']);
      var_dump($post);
 }
 

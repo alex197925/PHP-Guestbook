@@ -2,18 +2,18 @@
 declare(strict_types=1);
  class Post {
      private string $title;
-     private int $data;
+  //   private int $data;
      private string $content;
      private string $author;
 
 
 
-     public function __construct($content, $title,  $author, $data)
+     public function __construct($content, $title,  $author)
      {
         $this->title = $title;
-        $this->data = $data('Y/m/d H-i-s');
+      //  $this->data = $data('Y/m/d H-i-s');
          $this->content = $content;
-        $this->autor = $author;
+        $this->author = $author;
      }
 
      /**
