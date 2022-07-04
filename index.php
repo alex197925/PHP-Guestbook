@@ -9,10 +9,26 @@ $Date = date('m/d/Y');
 
 
 
+//if (isset($_POST['submit'])) {
+//     $post = new Post($_POST['text'], $_POST['title'], $_POST['author']);
+//     var_dump($post);
+//
+//}
+
 if (isset($_POST['submit'])) {
-     $post = new Post($_POST['text'], $_POST['title'], $_POST['author']);
-     var_dump($post);
+    $title = "Title:" .$_POST['title'];
+    $text = "Text:" .$_POST['text'];
+    $author = "Author" .$_POST['author'];
+    var_dump($title, $text, $author);
+
+    $file = fopen("data.txt", 'a');
+    fwrite($file, $title);
+    fwrite($file, $text);
+    fwrite($file, $author);
+    fclose($file);
 }
+
+
 
 
 

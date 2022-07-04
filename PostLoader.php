@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 class PostLoader
 {
-private array $post = [];
+private array $posts = [];
 private const DB_FILE = 'data.txt';
 
 
@@ -13,15 +13,16 @@ private const DB_FILE = 'data.txt';
      */
     public function getPost()
     {
-        return $this->post;
+        return $this->posts;
     }
 
     /**
-     * @param array $post
+     * @param array $posts
      */
-    public function savePost(array $post): void
+    public function savePost(array $posts): void
     {
-    $this->post[] = $post;
+       $this->posts[] = $posts;
+
 
 
     }
