@@ -4,8 +4,6 @@ declare(strict_types=1);
 class PostLoader
 {
 private array $posts = [];
-private const DB_FILE = 'data.txt';
-
 
 
     /**
@@ -24,8 +22,6 @@ private const DB_FILE = 'data.txt';
        $this->posts[] = $posts;
 
 
-
     }
-
 
 }

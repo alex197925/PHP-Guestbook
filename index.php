@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 require 'Post.php';
 require 'PostLoader.php';
-$data = require 'data.txt';
 date_default_timezone_set("UTC");
 $Date = date('m/d/Y');
 
@@ -15,18 +14,64 @@ $Date = date('m/d/Y');
 //
 //}
 
-if (isset($_POST['submit'])) {
-    $title = "Title:" .$_POST['title'];
-    $text = "Text:" .$_POST['text'];
-    $author = "Author" .$_POST['author'];
-    var_dump($title, $text, $author);
+//if (isset($_POST['submit'])) {
+//    $title = "Title:" .$_POST['title'];
+//    $text = "Text:" .$_POST['text'];
+//    $author = "Author" .$_POST['author'];
+//
+//
+//    $file = fopen("data.txt", 'a');
+//    fwrite($file, $title);
+//    fwrite($file, $text);
+//    fwrite($file, $author);
+//    fclose($file);
+//}
 
-    $file = fopen("data.txt", 'a');
-    fwrite($file, $title);
-    fwrite($file, $text);
-    fwrite($file, $author);
-    fclose($file);
+if(file_exists('file.json'))
+{
+    $final_data=fileWriteAppend();
+    if(file_put_contents('file.json', $final_data))
+    {
+        $message = "<label class='text-success'>Data added Success fully</p>";
+    }
 }
+//else
+//{
+//    $final_data=fileCreateWrite();
+//    if(file_put_contents('file.json', $final_data))
+//    {
+//        $message = "<label class='text-success'>File createed and  data added Success fully</p>";
+//    }
+
+
+function fileWriteAppend(){
+    $current_data = file_get_contents('file.json');
+    $array_data = json_decode($current_data, true);
+    $extra = array(
+        'title'               =>     $_POST['title'],
+        'text'          =>     $_POST["text"],
+        'author'          =>     $_POST["author"]
+    );
+    $array_data[] = $extra;
+    $final_data = json_encode($array_data);
+    return $final_data;
+}
+function fileCreateWrite(){
+    $file=fopen("file.json","w");
+    $array_data=array();
+    $extra = array(
+        'title'               =>     $_POST['title'],
+        'text'          =>     $_POST["text"],
+        'author'          =>     $_POST["author"]
+
+
+    );
+    $array_data[] = $extra;
+    $final_data = json_encode($array_data);
+    fclose($file);
+    return $final_data;
+}
+
 
 
 
@@ -67,11 +112,15 @@ if (isset($_POST['submit'])) {
                 <label>
                     Message: <textarea name="text" rows="5" cols="40"></textarea>
                 </label>
-                <button type="submit" name="submit">Post Comment</button>
+                <button type="submit" name="submit">
+                    Post Comment</button>
             </div>
             <div class="output_message">
                 <output name="result" for="a b">
+                    <?php
 
+//                    $this->savePost();
+                    ?>
                 </output>
             </div>
         </form>
